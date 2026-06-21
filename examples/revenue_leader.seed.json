@@ -1,0 +1,119 @@
+{
+  "schema_version": "0.1",
+  "context": "Sales representative becoming a revenue leader.",
+  "threshold": 0.2,
+  "malkuth": {
+    "human_state": "A sales representative with strong individual performance but limited team-level leverage.",
+    "current_state": "Owns a personal pipeline, closes deals directly, and depends on personal relationships for momentum.",
+    "evidence": [
+      "quarterly sales history",
+      "CRM records",
+      "customer renewal notes"
+    ]
+  },
+  "kether": {
+    "target_state": "A revenue leader who can produce repeatable revenue through strategy, team systems, and delegated execution.",
+    "success_condition": "Revenue growth continues through the team operating system even when the original representative is not directly driving every deal.",
+    "evidence": [
+      "team pipeline health",
+      "forecast accuracy",
+      "delegated account wins"
+    ]
+  },
+  "sephira": {
+    "Malkuth": {
+      "focus_value": "Execution Reality",
+      "domain_instantiation": "Current sales behavior, accounts, pipeline quality, and observable operating habits.",
+      "desired_state": "The current reality is measurable enough to support honest transformation planning.",
+      "evidence": ["CRM baseline", "activity logs", "win/loss notes"],
+      "qliphoth_risk": "Activity looks busy but does not reveal real account quality or repeatable process."
+    },
+    "Yesod": {
+      "focus_value": "Foundation",
+      "domain_instantiation": "Repeatable sales operating system, handoff protocol, and review cadence.",
+      "desired_state": "The operating foundation can support delegation and learning without the original seller.",
+      "evidence": ["sales playbook", "review cadence", "handoff checklist"],
+      "qliphoth_risk": "The playbook exists as fantasy documentation but is not used in live deals."
+    },
+    "Hod": {
+      "focus_value": "Analysis and Communication",
+      "domain_instantiation": "Forecast language, CRM hygiene, metrics, and written account reasoning.",
+      "desired_state": "The team can explain deal quality and forecast changes with shared language.",
+      "evidence": ["forecast notes", "CRM field quality", "pipeline review memos"],
+      "qliphoth_risk": "Metrics rationalize wishful thinking instead of revealing risk."
+    },
+    "Netzach": {
+      "focus_value": "Endurance",
+      "domain_instantiation": "Sustained pipeline creation, follow-up discipline, and resilience through long cycles.",
+      "desired_state": "Momentum survives rejection, long sales cycles, and temporary setbacks.",
+      "evidence": ["follow-up history", "multi-quarter pipeline creation", "renewal persistence"],
+      "qliphoth_risk": "Persistence becomes vanity pursuit of low-quality opportunities."
+    },
+    "Tiferet": {
+      "focus_value": "Integration",
+      "domain_instantiation": "Balanced revenue judgment across customer value, team capacity, and strategic fit.",
+      "desired_state": "Decisions integrate growth, risk, customer trust, and team capability.",
+      "evidence": ["deal review decisions", "resource tradeoff notes", "customer health outcomes"],
+      "qliphoth_risk": "The leader becomes the false center and blocks distributed judgment."
+    },
+    "Geburah": {
+      "focus_value": "Discipline and Judgment",
+      "domain_instantiation": "Qualification gates, risk boundaries, discount discipline, and prioritization.",
+      "desired_state": "The team can reject bad revenue and protect strategic focus.",
+      "evidence": ["qualification rubric", "discount approvals", "lost-deal rationale"],
+      "qliphoth_risk": "Discipline becomes punitive control that kills learning and initiative."
+    },
+    "Chesed": {
+      "focus_value": "Value Expansion",
+      "domain_instantiation": "Partnership development, account expansion, coaching, and resource creation.",
+      "desired_state": "Opportunities expand through systems and people, not just personal charisma.",
+      "evidence": ["partner-sourced pipeline", "coaching logs", "expansion playbooks"],
+      "qliphoth_risk": "Expansion consumes resources without strategic qualification."
+    },
+    "Binah": {
+      "focus_value": "Structural Understanding",
+      "domain_instantiation": "Market segmentation, role design, process boundaries, and revenue architecture.",
+      "desired_state": "The revenue system has clear structure and constraints.",
+      "evidence": ["segment definitions", "role map", "process boundaries"],
+      "qliphoth_risk": "Structure hides assumptions and makes the system opaque."
+    },
+    "Chokmah": {
+      "focus_value": "Generative Insight",
+      "domain_instantiation": "Opportunity sensing, strategic bets, and pattern recognition across accounts.",
+      "desired_state": "Insight generates valuable options that can be tested by structure.",
+      "evidence": ["strategic account theses", "market signal notes", "experiment backlog"],
+      "qliphoth_risk": "Ideation becomes noise that distracts from execution."
+    },
+    "Kether": {
+      "focus_value": "Objective Coherence",
+      "domain_instantiation": "Revenue leadership target expressed as coherent business and team outcomes.",
+      "desired_state": "The goal is coherent, measurable, and not split by hidden incentives.",
+      "evidence": ["north-star metric", "leadership charter", "success rubric"],
+      "qliphoth_risk": "Revenue, status, and team health pull toward contradictory targets."
+    }
+  },
+  "paths": {
+    "11": {"from": "Kether", "to": "Chokmah", "cq": "What possibilities express the target without betraying its core intent?", "answer": "Prioritize options that create repeatable revenue leadership rather than larger individual heroics.", "evidence": ["option thesis list"], "qliphoth_check": "Reject options that increase dependence on the original seller."},
+    "12": {"from": "Kether", "to": "Binah", "cq": "What constraints make the target concrete, bounded, and verifiable?", "answer": "Define revenue, retention, delegation, and forecast accuracy boundaries before implementation.", "evidence": ["success rubric"], "qliphoth_check": "Check for hidden status goals disguised as business outcomes."},
+    "13": {"from": "Kether", "to": "Tiferet", "cq": "What central principle keeps decisions aligned with the target state?", "answer": "Every decision must increase repeatable team revenue capability without degrading customer trust.", "evidence": ["decision principle"], "qliphoth_check": "Flag decisions centered on personal indispensability."},
+    "14": {"from": "Chokmah", "to": "Binah", "cq": "Which ideas survive structural validation and become usable options?", "answer": "Only market bets with segment evidence, owner clarity, and measurable hypotheses survive.", "evidence": ["experiment backlog"], "qliphoth_check": "Remove ideas with no validation pathway."},
+    "15": {"from": "Chokmah", "to": "Tiferet", "cq": "Which insight should become the central strategy?", "answer": "Focus on turning strongest individual sales patterns into team-level playbooks and review rituals.", "evidence": ["pattern analysis"], "qliphoth_check": "Avoid charisma-based strategies that cannot transfer."},
+    "16": {"from": "Chokmah", "to": "Chesed", "cq": "Which opportunities deserve expansion, resources, or sponsorship?", "answer": "Expand account plays that can be taught, delegated, and measured across sellers.", "evidence": ["coachable account plays"], "qliphoth_check": "Check that expansion is not just chasing every large account."},
+    "17": {"from": "Binah", "to": "Tiferet", "cq": "Which constraints must be integrated into the main plan?", "answer": "Team capacity, segment fit, buying cycle length, and onboarding load shape the plan.", "evidence": ["capacity plan"], "qliphoth_check": "Watch for plans that ignore actual team bandwidth."},
+    "18": {"from": "Binah", "to": "Geburah", "cq": "Which rules, risks, or boundaries prevent invalid execution?", "answer": "Use qualification gates, discount thresholds, and escalation criteria to stop invalid deals.", "evidence": ["qualification rubric"], "qliphoth_check": "Ensure gates do not become arbitrary punishment."},
+    "19": {"from": "Chesed", "to": "Geburah", "cq": "How should expansion be balanced with discipline?", "answer": "Resource expansion only after qualification and learning value are explicit.", "evidence": ["resource approval notes"], "qliphoth_check": "Look for wasteful sponsorship of unqualified opportunities."},
+    "20": {"from": "Chesed", "to": "Tiferet", "cq": "Which value-producing actions serve the integrated strategy?", "answer": "Coaching, partner development, and account expansion serve the repeatable revenue strategy.", "evidence": ["coaching cadence"], "qliphoth_check": "Check for generosity that creates dependency."},
+    "21": {"from": "Chesed", "to": "Netzach", "cq": "Which growth bets require long-term commitment?", "answer": "Strategic partnerships and enterprise account plays require multi-quarter persistence.", "evidence": ["partnership roadmap"], "qliphoth_check": "Stop bets sustained only by ego."},
+    "22": {"from": "Geburah", "to": "Tiferet", "cq": "Which risks should reshape the central judgment?", "answer": "Forecast risk, customer trust risk, and team overload risk can reshape strategy.", "evidence": ["risk register"], "qliphoth_check": "Avoid fear-based over-pruning."},
+    "23": {"from": "Geburah", "to": "Hod", "cq": "Which controls must be represented in data, metrics, or process?", "answer": "Qualification, discounting, forecast confidence, and escalation controls must be visible.", "evidence": ["CRM required fields"], "qliphoth_check": "Flag controls that only create reporting theater."},
+    "24": {"from": "Tiferet", "to": "Netzach", "cq": "What sustained behavior keeps the strategy alive?", "answer": "Weekly pipeline review, coaching, and follow-up discipline keep strategy alive.", "evidence": ["weekly cadence"], "qliphoth_check": "Check for ritual without strategic adjustment."},
+    "25": {"from": "Tiferet", "to": "Yesod", "cq": "What foundation must exist before the plan can manifest?", "answer": "Playbooks, owners, review cadence, and CRM hygiene must exist before delegation scales.", "evidence": ["operating system checklist"], "qliphoth_check": "Do not treat documentation as readiness unless used live."},
+    "26": {"from": "Tiferet", "to": "Hod", "cq": "What explanation, model, or metric proves the decision is coherent?", "answer": "A written strategy memo ties metrics, customer value, team capacity, and revenue targets.", "evidence": ["strategy memo"], "qliphoth_check": "Check for elegant analysis that hides contradictions."},
+    "27": {"from": "Netzach", "to": "Hod", "cq": "How do motivation and analysis correct each other?", "answer": "Persistence is redirected by forecast evidence and analysis is grounded by live customer motion.", "evidence": ["review notes"], "qliphoth_check": "Watch for either stubbornness or analysis paralysis."},
+    "28": {"from": "Netzach", "to": "Yesod", "cq": "What routines convert persistence into readiness?", "answer": "Follow-up routines, review rituals, and handoff drills turn persistence into operating readiness.", "evidence": ["routine tracker"], "qliphoth_check": "Check routines for actual outcomes, not just completion."},
+    "29": {"from": "Netzach", "to": "Malkuth", "cq": "Which sustained actions are visible in the real world?", "answer": "Repeated customer follow-ups, pipeline creation, and delegated deal motion are visible.", "evidence": ["CRM activity history"], "qliphoth_check": "Distinguish visible activity from real progress."},
+    "30": {"from": "Hod", "to": "Yesod", "cq": "Which specifications, tools, or protocols make the plan executable?", "answer": "CRM definitions, meeting templates, handoff protocol, and coaching rubric make the plan executable.", "evidence": ["tooling and templates"], "qliphoth_check": "Ensure tools reduce ambiguity rather than create bureaucracy."},
+    "31": {"from": "Hod", "to": "Malkuth", "cq": "What evidence in the current state confirms or falsifies the analysis?", "answer": "CRM data, customer notes, conversion rates, and forecast misses test the analysis.", "evidence": ["baseline report"], "qliphoth_check": "Flag selective metrics that protect a preferred story."},
+    "32": {"from": "Yesod", "to": "Malkuth", "cq": "What minimum viable foundation enables the next concrete step?", "answer": "A minimal playbook, owner map, review cadence, and first delegated deal create the next step.", "evidence": ["first delegation plan"], "qliphoth_check": "Check that the next step is executable this week."}
+  }
+}

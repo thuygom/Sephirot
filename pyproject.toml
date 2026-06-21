@@ -1,0 +1,11 @@
+[project]
+name = "sephirot"
+version = "0.1.0"
+description = "Spec-first dual knowledge graph builder from Malkuth to Kether."
+readme = "readme.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Sephirot Contributors" }]
+
+[project.scripts]
+sephirot = "sephirot.cli:main"

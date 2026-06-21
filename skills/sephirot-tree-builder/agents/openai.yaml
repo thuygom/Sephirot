@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sephirot Tree Builder"
+  short_description: "Build spec-first Sephirot/Qliphoth knowledge graphs."
+  default_prompt: "Use Sephirot Tree Builder to interview for a Malkuth-to-Kether spec, reduce ambiguity, and build/export the dual graph."

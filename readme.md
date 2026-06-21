@@ -358,6 +358,70 @@ TransformationGraph
 - **Risk review**: detect whether a plan is being corrupted by Qliphoth-style anti-patterns.
 - **Domain ontology generation**: create goal-oriented ontologies for business, healthcare, education, finance, engineering, and research.
 
+## CLI and Agent Skill
+
+Sephirot starts as a CLI-first agent tool.
+It follows the same spec-first spirit as Ouroboros: interview first, crystallize a seed spec, block graph construction until ambiguity is low enough, then build/export the artifact.
+
+```bash
+python3 -m sephirot.cli new --context "Malkuth human state -> Kether target state" --out sephirot.seed.json
+python3 -m sephirot.cli init "Malkuth human state -> Kether target state" --out sephirot.seed.json
+python3 -m sephirot.cli score --input sephirot.seed.json
+python3 -m sephirot.cli questions --input sephirot.seed.json --limit 8
+python3 -m sephirot.cli build --input sephirot.seed.json --out sephirot.graph.json
+```
+
+The build command is gated by ambiguity:
+
+```text
+ambiguity <= 0.2 -> build allowed
+ambiguity > 0.2  -> continue the interview
+```
+
+The repo also includes a Codex/Claude-style skill at:
+
+```text
+skills/sephirot-tree-builder/SKILL.md
+```
+
+That skill wraps the CLI as an agent workflow:
+
+```text
+Interview -> Seed Spec -> Ambiguity Gate -> Dual Tree Build -> Graph DB Export
+```
+
+## Neo4j Compatibility
+
+Sephirot graph output is designed to be graph-database compatible.
+The first supported export target is Neo4j Cypher.
+
+```bash
+python3 -m sephirot.cli build \
+  --input examples/revenue_leader.seed.json \
+  --out sephirot.graph.json
+
+python3 -m sephirot.cli export-neo4j \
+  --input sephirot.graph.json \
+  --out sephirot.cypher
+```
+
+The Cypher export creates:
+
+- `(:Journey)`
+- `(:Sephira)`
+- `(:Qliphoth)`
+- `[:SEPHIROT_PATH]`
+- `[:QLIPHOTH_PATH]`
+- `[:MIRRORS]`
+- `[:STARTS_AT]`
+- `[:TARGETS]`
+
+Load into Neo4j with:
+
+```bash
+cypher-shell -u neo4j -p "$NEO4J_PASSWORD" -f sephirot.cypher
+```
+
 ## Reference Imagery
 
 The visual assets in `res/` are used as conceptual references for the graph language.
