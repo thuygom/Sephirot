@@ -1,254 +1,400 @@
 # Sephirot
 
-> From current state to target state, through capability-filled Sephira.
+> A dual-polarity knowledge graph for moving from **Malkuth** to **Kether** through 10 focus values and 22 Competency Question paths.
 
-Sephirot is an open-source ontology and knowledge graph framework for modeling transformation.
-It represents a journey from **Malkuth** (the current state) to **Kether** (the target state) as a structured graph of intermediate **Sephira**, each filled with measurable **CQ** units.
+Sephirot is an open-source ontology and knowledge graph framework for goal attainment.
+It models a target journey as two coupled graphs:
 
-In practical terms, Sephirot turns a goal like "sales representative -> CEO" or "junior engineer -> principal architect" into:
+- **Sephirot Tree**: the positive knowledge graph of values, capabilities, evidence, and transformation.
+- **Qliphoth Tree**: the negative knowledge graph of distortions, failure modes, risks, and regressions.
 
-- a capability graph that explains what must be acquired,
-- a transition graph that explains how each step connects,
-- a risk graph that explains what can break the path,
-- and a reusable ontology that can be shared across people, teams, and domains.
+The project does not hide the occult layer or reduce it to decoration.
+The occult structure is the **source schema**: Sephira, Qliphoth, pillars, paths, ascent, descent, and correspondence are preserved as first-class modeling concepts, then compiled into ontology and KG engineering primitives.
 
-<p align="center">
-  <img src="res/tree-of-life-death.webp" alt="Tree of Life and Tree of Death as the dual success and failure model" width="760">
-</p>
-
-## What Is Sephirot?
-
-Most knowledge graphs describe relationships between things:
+Sephirot is therefore a graph language for asking:
 
 ```text
-Entity A -> Entity B -> Entity C
+Where am I now?
+What is the target state?
+Which 10 values must I develop?
+Which 22 path questions must the knowledge graph answer?
+What failure patterns can corrupt the journey?
 ```
 
-Sephirot describes transformation between states:
+<p align="center">
+  <img src="res/tree-of-life-death.webp" alt="Tree of Life and Tree of Death as positive and negative knowledge graphs" width="760">
+</p>
+
+## Occult x Ontology Engineering
+
+The core stance of this project is:
+
+> Do not erase the occult grammar. Compile it.
+
+Sephirot treats the Tree of Life as a symbolic knowledge architecture and the Tree of Death as its shadow architecture.
+The point is not to make a sterile productivity chart with exotic labels.
+The point is to keep the vertical ascent, polarity, correspondence, and mirror-risk structure because that is where the graph becomes expressive.
+
+| Occult Structure | KG Engineering Interpretation |
+| --- | --- |
+| Ain | Unbounded unknown; pre-ontology problem space |
+| Ain Soph | Infinite possibility space; unconstrained hypothesis field |
+| Ain Soph Aur | First illumination; context prior that makes modeling possible |
+| Sephira | Archetypal value node; typed class in the positive graph |
+| Qliphoth | Shadow node; anti-pattern or corrupted class in the negative graph |
+| Path | Edge between value nodes; transition that must be justified |
+| Hebrew-letter path | Stable symbolic edge identifier; default path profile |
+| Pillars | Polarity constraints: expansion, restriction, and integration |
+| Ascent | Goal-directed transformation from Malkuth to Kether |
+| Descent | Manifestation flow from abstract intent to concrete execution |
+| Correspondence | Cross-domain mapping between symbols, values, evidence, and actions |
+
+The symbolic layer is part of the API.
+It gives the ontology a native language for transformation, not just classification.
+
+## Core Idea
+
+In Sephirot, **Malkuth** is the current state and **Kether** is the target state.
+The space between them is not treated as vague ambition.
+It is filled with:
+
+- 10 value nodes, represented by the Sephira,
+- 22 path-level **Competency Questions**,
+- evidence that answers those questions,
+- and Qliphoth mirrors that warn where each value or path can fail.
 
 ```text
 Malkuth
 Current State
     |
-    |  CQ-filled Sephira
+    |  22 CQ paths
+    |  answered with evidence
+    v
+10 Focus Values
+Sephira as ontology nodes
+    |
     v
 Kether
 Target State
 ```
 
-The central idea is simple:
+**CQ** means **Competency Question**.
+In ontology engineering, a competency question is a natural-language question that the ontology or knowledge graph must be able to answer.
+Sephirot uses CQs as the 22 transformation paths between the 10 focus values.
 
-> To reach Kether from Malkuth, the empty space between them must be filled with Sephira. Each Sephira is not just a mystical label; it is a capability node populated by CQ.
+## Why This Shape?
 
-Here, **CQ** means **Capability Quotient**: a structured unit of required ability, evidence, maturity, or readiness.
+Traditional Tree of Life diagrams are commonly described as 10 Sephirot connected by 22 paths.
+Sephirot turns that symbolic structure into a goal-oriented graph model:
 
-## Core Model
-
-```mermaid
-flowchart TB
-    M[Malkuth<br/>Current State] --> S1[Sephira<br/>CQ: Foundation]
-    S1 --> S2[Sephira<br/>CQ: Execution]
-    S2 --> S3[Sephira<br/>CQ: Strategy]
-    S3 --> S4[Sephira<br/>CQ: Leadership]
-    S4 --> K[Kether<br/>Target State]
-
-    M -.-> Q[Qliphoth<br/>Failure Patterns]
-    Q -. risk feedback .-> S2
-    Q -. risk feedback .-> S3
+```text
+10 Sephira = values to focus on
+22 Paths   = competency questions to answer
+Qliphoth   = negative mirror of each value and path
 ```
 
-Sephirot has two complementary graphs:
+The positive tree asks:
 
-| Graph | Role |
-| --- | --- |
-| Sephirot Graph | The positive transformation path from current state to target state |
-| CQ Graph | The measurable capability units required to fill each Sephira |
-| Qliphoth Graph | The mirrored failure patterns, regressions, and risk states |
-| Path Graph | The transition rules between capability nodes |
+```text
+What must become true for the goal to be reached?
+```
+
+The negative tree asks:
+
+```text
+What distortion would make the same journey fail?
+```
 
 <p align="center">
-  <img src="res/sephirot-qliphoth-tree.jpg" alt="Sephirot and Qliphoth as mirrored ascent and descent trees" width="420">
+  <img src="res/sephirot-qliphoth-tree.jpg" alt="Mirrored Sephirot and Qliphoth tree" width="430">
 </p>
 
 ## Ontology Vocabulary
 
 | Term | Meaning in Sephirot |
 | --- | --- |
-| Malkuth | Current state, starting condition, baseline identity |
-| Kether | Target state, desired outcome, north-star capability |
-| Sephira | Intermediate capability node between Malkuth and Kether |
-| CQ | Capability Quotient; measurable capability unit used to fill a Sephira |
-| Path | Transformation rule connecting one state or capability to another |
-| Qliphoth | Failure pattern, risk mirror, anti-capability, or corrupted transition |
-| Knowledge Graph | Domain-specific structure that stores states, CQ, paths, and risks |
+| Malkuth | Current state, baseline reality, observable starting point |
+| Kether | Target state, north-star objective, desired future condition |
+| Sephira | One of 10 focus value nodes required for transformation |
+| Path | A directed or undirected transition edge between value nodes |
+| CQ | Competency Question; a path-level question the graph must answer |
+| Evidence | Data, artifact, behavior, metric, or event that supports a CQ answer |
+| Qliphoth | Negative mirror graph: failure mode, distortion, anti-value, or corrupted path |
+| Da'at | Optional knowledge/integration node; not required in the 10-value MVP |
 
-The names come from the symbolic structure of the Tree of Life and Tree of Death, but the project itself is a practical ontology and graph framework. The metaphor is used as a compact architectural language: ascent, capability acquisition, integration, and failure mirroring.
+## The 10 Focus Values
 
-## CQ-Filled Sephira
+The default graph keeps the traditional top-down numbering, but goal work usually runs as ascent: from **Malkuth** to **Kether**.
+Each Sephira becomes a value that must be made explicit, measurable, and answerable.
 
-In Sephirot, a Sephira is empty until it is filled by CQ.
+| # | Sephira | Focus Value | Knowledge Graph Role | Qliphoth Mirror | Failure Mode |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Kether | Objective Coherence | Target definition and final success condition | Thaumiel | Split goals, contradictory incentives |
+| 2 | Chokmah | Generative Insight | Possibility space, intuition, creative alternatives | Ghogiel | Noise, confusion, ungrounded ideation |
+| 3 | Binah | Structural Understanding | Constraints, categories, rules, boundaries of meaning | Satariel | Hidden assumptions, opacity, concealed defects |
+| 4 | Chesed | Value Expansion | Resources, generosity, leverage, opportunity creation | Gha'agsheblah | Waste, over-expansion, blind resource consumption |
+| 5 | Geburah | Discipline and Judgment | Risk gates, prioritization, rejection, enforcement | Golachab | Destructive severity, punitive control, over-pruning |
+| 6 | Tiferet | Integration | Central judgment, balance, synthesis, strategy | Thagirion | Ego distortion, false center, performative harmony |
+| 7 | Netzach | Endurance | Motivation, persistence, long-horizon momentum | A'arab Zaraq | Scattered desire, obsession, vanity momentum |
+| 8 | Hod | Analysis and Communication | Models, language, metrics, documentation, explanation | Samael | Poisoned logic, misleading analysis, rationalization |
+| 9 | Yesod | Foundation | Operating substrate, readiness, interfaces, habits | Gamaliel | Illusion of readiness, unstable foundation, fantasy plan |
+| 10 | Malkuth | Execution Reality | Current state, material evidence, actual behavior | Lilith / Nahemoth | Disconnected execution, surface-level activity, drift |
 
-```text
-Sephira: Leadership
+The project treats these as **value slots**.
+A domain ontology fills them with concrete concepts.
 
-CQ slots:
-- Decision CQ
-- Communication CQ
-- Delegation CQ
-- Conflict Resolution CQ
-- Organizational Context CQ
-
-Evidence:
-- led a project with 5+ contributors
-- resolved cross-team dependency
-- shipped measurable business outcome
-- transferred knowledge to successors
-```
-
-A transformation path is therefore not just a chain of labels. It is a progressive capability structure:
-
-```text
-Malkuth
-Sales Representative
-    |
-    v
-Sephira: Customer Understanding
-    CQ: Market CQ, Persona CQ, CRM CQ
-    |
-    v
-Sephira: Revenue Execution
-    CQ: Pipeline CQ, Negotiation CQ, Forecasting CQ
-    |
-    v
-Sephira: Strategic Leadership
-    CQ: Hiring CQ, Delegation CQ, Budget CQ
-    |
-    v
-Kether
-100B KRW Revenue Leader
-```
-
-<p align="center">
-  <img src="res/classic-sephirot.webp" alt="Classic Sephirot structure used as the conceptual model for staged capability ascent" width="420">
-</p>
-
-## Qliphoth: Failure Pattern Graph
-
-Every growth path has a shadow path.
-
-If Sephirot models the capabilities required for ascent, Qliphoth models the anti-patterns that block it.
+Example:
 
 ```text
-Target:
-Revenue Leader
+Goal:
+Sales Representative -> Revenue Leader
 
-Positive CQ:
-- Strategy CQ
-- Customer CQ
-- Hiring CQ
-- Forecasting CQ
+Malkuth:
+Current role, current pipeline, current behavior, current evidence
 
-Qliphoth risks:
-- overconfidence
-- weak CRM discipline
-- poor market validation
-- micromanagement
-- partnership collapse
+Kether:
+Target revenue leadership capability and measurable outcome
+
+Sephira:
+Customer understanding, strategy, negotiation, hiring, operating cadence
+
+Qliphoth:
+Poor CRM discipline, overconfidence, false forecasting, hero dependency
 ```
 
-This allows the system to reason about both:
+## The 22 CQ Paths
 
-```text
-What must be acquired?
-What must be avoided?
+The 22 paths are modeled as **Competency Questions**.
+Each CQ is a question the knowledge graph must answer before the journey can be considered coherent.
+This keeps the occult idea of a path as a lived transition, while giving it an engineering form that can be queried, tested, and validated.
+
+This README uses a practical Hermetic-style 22-edge map as the default implementation map.
+Different Kabbalistic traditions arrange some paths differently; Sephirot treats the map as a configurable ontology profile.
+
+| Path | Edge | Competency Question |
+| --- | --- | --- |
+| 11 | Kether -> Chokmah | What possibilities express the target without betraying its core intent? |
+| 12 | Kether -> Binah | What constraints make the target concrete, bounded, and verifiable? |
+| 13 | Kether -> Tiferet | What central principle keeps decisions aligned with the target state? |
+| 14 | Chokmah -> Binah | Which ideas survive structural validation and become usable options? |
+| 15 | Chokmah -> Tiferet | Which insight should become the central strategy? |
+| 16 | Chokmah -> Chesed | Which opportunities deserve expansion, resources, or sponsorship? |
+| 17 | Binah -> Tiferet | Which constraints must be integrated into the main plan? |
+| 18 | Binah -> Geburah | Which rules, risks, or boundaries prevent invalid execution? |
+| 19 | Chesed -> Geburah | How should expansion be balanced with discipline? |
+| 20 | Chesed -> Tiferet | Which value-producing actions serve the integrated strategy? |
+| 21 | Chesed -> Netzach | Which growth bets require long-term commitment? |
+| 22 | Geburah -> Tiferet | Which risks should reshape the central judgment? |
+| 23 | Geburah -> Hod | Which controls must be represented in data, metrics, or process? |
+| 24 | Tiferet -> Netzach | What sustained behavior keeps the strategy alive? |
+| 25 | Tiferet -> Yesod | What foundation must exist before the plan can manifest? |
+| 26 | Tiferet -> Hod | What explanation, model, or metric proves the decision is coherent? |
+| 27 | Netzach -> Hod | How do motivation and analysis correct each other? |
+| 28 | Netzach -> Yesod | What routines convert persistence into readiness? |
+| 29 | Netzach -> Malkuth | Which sustained actions are visible in the real world? |
+| 30 | Hod -> Yesod | Which specifications, tools, or protocols make the plan executable? |
+| 31 | Hod -> Malkuth | What evidence in the current state confirms or falsifies the analysis? |
+| 32 | Yesod -> Malkuth | What minimum viable foundation enables the next concrete step? |
+
+Each CQ path can be stored as a graph edge:
+
+```json
+{
+  "path": 25,
+  "symbolic_profile": {
+    "tree": "Sephirot",
+    "movement": "ascent",
+    "correspondence_layer": ["pathwork", "foundation", "manifestation"]
+  },
+  "from": "Tiferet",
+  "to": "Yesod",
+  "cq": "What foundation must exist before the plan can manifest?",
+  "positive_graph": ["strategy", "readiness", "operating_model"],
+  "negative_graph": ["illusion_of_readiness", "missing_interface", "fragile_process"],
+  "evidence": ["runbook", "owner_map", "metric_baseline", "pilot_result"]
+}
 ```
+
+## Positive and Negative Knowledge Graphs
+
+Sephirot does not only ask whether a capability exists.
+It asks whether the capability exists without being corrupted by its mirror failure.
+
+```mermaid
+flowchart TB
+    M[Malkuth<br/>Current State] --> Y[Yesod<br/>Foundation]
+    Y --> H[Hod<br/>Analysis]
+    Y --> N[Netzach<br/>Endurance]
+    H --> T[Tiferet<br/>Integration]
+    N --> T
+    T --> G[Geburah<br/>Discipline]
+    T --> C[Chesed<br/>Expansion]
+    G --> B[Binah<br/>Structure]
+    C --> Ch[Chokmah<br/>Insight]
+    B --> K[Kether<br/>Target State]
+    Ch --> K
+
+    M -. negative mirror .-> L[Lilith / Nahemoth<br/>Disconnected Execution]
+    Y -. negative mirror .-> Ga[Gamaliel<br/>Illusion of Readiness]
+    H -. negative mirror .-> Sa[Samael<br/>Misleading Analysis]
+    T -. negative mirror .-> Th[Thagirion<br/>False Center]
+    K -. negative mirror .-> Ta[Thaumiel<br/>Split Goal]
+```
+
+The Qliphoth graph is useful because many plans fail not from missing ambition, but from distorted values:
+
+- structure becomes bureaucracy,
+- discipline becomes punishment,
+- expansion becomes waste,
+- analysis becomes rationalization,
+- persistence becomes obsession,
+- execution becomes motion without transformation.
 
 ## Example: Succession Agent
 
 Sephirot can be used to build a succession agent for organizations.
+The agent does not only record what a high performer knows.
+It models the path by which another person can become capable of reproducing that performance.
 
 ```text
 Malkuth:
-High-performing individual contributor
+High-performing individual contributor with tacit expertise
 
 Kether:
-Team lead who can reproduce high performance across others
+Team lead who can reproduce performance through people, process, and judgment
 ```
 
-Generated Sephira:
+### 10 Values for the Succession Path
 
-| Sephira | CQ Examples |
+| Sephira | Domain Instantiation |
 | --- | --- |
-| Domain Mastery | Product CQ, Customer CQ, Technical CQ |
-| Execution System | Prioritization CQ, Delivery CQ, Review CQ |
-| Communication | Writing CQ, Meeting CQ, Stakeholder CQ |
-| Leadership | Delegation CQ, Feedback CQ, Hiring CQ |
-| Knowledge Transfer | Documentation CQ, Mentoring CQ, Succession CQ |
+| Malkuth | Current tasks, current outputs, current context |
+| Yesod | Repeatable operating habits and baseline process |
+| Hod | Documentation, metrics, language, review artifacts |
+| Netzach | Motivation, resilience, repeated delivery behavior |
+| Tiferet | Balanced judgment across product, people, and execution |
+| Geburah | Risk boundaries, prioritization, quality gates |
+| Chesed | Mentoring, delegation, resource creation |
+| Binah | System structure, role definition, organizational constraints |
+| Chokmah | Strategic insight, opportunity sensing, pattern recognition |
+| Kether | Succession-ready leadership capability |
 
-Generated Qliphoth:
+### Sample CQ Answers
 
-| Failure Pattern | Risk |
-| --- | --- |
-| Hero dependency | The team depends on one exceptional person |
-| Tacit knowledge lock-in | Important knowledge remains undocumented |
-| Delegation failure | The successor never receives ownership |
-| Status distortion | Promotion is based on visibility, not capability |
+```text
+CQ 31:
+What evidence in the current state confirms or falsifies the analysis?
+
+Answer:
+The successor has handled three customer escalations, produced weekly written updates,
+and maintained delivery quality while the original expert was absent.
+
+Qliphoth check:
+If success only occurred under hidden intervention by the original expert,
+the path is corrupted by hero dependency.
+```
+
+```text
+CQ 25:
+What foundation must exist before the plan can manifest?
+
+Answer:
+A runbook, ownership map, escalation policy, quality baseline, and review cadence
+exist before delegation is considered complete.
+
+Qliphoth check:
+If the runbook exists but is not used in real incidents,
+the path is corrupted by illusion of readiness.
+```
+
+<p align="center">
+  <img src="res/classic-sephirot.webp" alt="Classic Sephirot structure used as the 10-value ontology map" width="420">
+</p>
+
+## Data Model Sketch
+
+```text
+State
+  id
+  label
+  evidence
+
+Sephira
+  id
+  name
+  focus_value
+  domain_instantiation
+  positive_indicators
+  qliphoth_mirror
+  failure_indicators
+
+Path
+  id
+  symbolic_profile
+  from_sephira
+  to_sephira
+  competency_question
+  correspondence_layer
+  answer_requirements
+  evidence_requirements
+  risk_checks
+
+TransformationGraph
+  malkuth_state
+  kether_state
+  sephira_nodes
+  cq_paths
+  qliphoth_nodes
+  qliphoth_edges
+```
 
 ## Use Cases
 
-- **Career planning**: identify the CQ gap between a current role and a target role.
-- **Succession planning**: convert high-performer growth paths into reusable organizational knowledge.
-- **Training design**: map curriculum modules to missing CQ slots.
-- **Agent planning**: give AI agents a structured model of states, capabilities, and failure patterns.
-- **Knowledge transfer**: transform tacit expertise into graph-based institutional memory.
-- **Domain ontology generation**: build goal-oriented ontologies for business, healthcare, education, finance, engineering, and research.
-
-## System Components
-
-```text
-Input
-  Current State + Target State
-
-Ontology Layer
-  Malkuth, Kether, Sephira, CQ, Paths, Qliphoth
-
-Graph Builder
-  Generates capability paths and failure mirrors
-
-Scoring Engine
-  Measures CQ gap, readiness, evidence, and risk
-
-Output
-  Transformation graph, learning path, succession map, agent plan
-```
+- **Goal planning**: convert a vague target into 10 focus values and 22 answerable path questions.
+- **Career development**: map the gap between current role and target role.
+- **Succession planning**: turn tacit high-performer expertise into reusable organizational knowledge.
+- **Agent planning**: give AI agents a graph of goals, values, CQs, evidence, and failure modes.
+- **Training design**: generate curricula from unanswered CQs.
+- **Risk review**: detect whether a plan is being corrupted by Qliphoth-style anti-patterns.
+- **Domain ontology generation**: create goal-oriented ontologies for business, healthcare, education, finance, engineering, and research.
 
 ## Reference Imagery
 
-The visual assets in `res/` are used as conceptual references for the project's graph language.
+The visual assets in `res/` are used as conceptual references for the graph language.
 
 | Image | Purpose |
 | --- | --- |
-| `tree-of-life-death.webp` | Dual graph: success path and failure mirror |
-| `sephirot-qliphoth-tree.jpg` | Ascent/descent metaphor for transformation and regression |
-| `classic-sephirot.webp` | Staged Sephira structure for capability nodes |
-| `serpent-tree.webp` | Continuous path traversal across upper and lower states |
+| `tree-of-life-death.webp` | Dual positive/negative knowledge graph |
+| `sephirot-qliphoth-tree.jpg` | Ascent and descent metaphor for transformation and failure |
+| `classic-sephirot.webp` | 10-value Sephira structure |
+| `serpent-tree.webp` | Continuous traversal across the tree |
 
 <p align="center">
-  <img src="res/serpent-tree.webp" alt="Continuous traversal through the Sephirot and Qliphoth tree" width="420">
+  <img src="res/serpent-tree.webp" alt="Continuous traversal through Sephirot and Qliphoth" width="420">
 </p>
 
 ## Roadmap
 
 - [ ] Core ontology schema
-- [ ] CQ schema and scoring model
+- [ ] 10-value Sephira profile
+- [ ] 22-path CQ profile
+- [ ] Qliphoth mirror profile
+- [ ] Evidence schema
+- [ ] CQ answer validation
 - [ ] Knowledge graph builder
-- [ ] Sephira path generator
-- [ ] Qliphoth risk graph generator
-- [ ] Evidence and readiness scoring
 - [ ] Graph visualization
 - [ ] Domain ontology templates
-- [ ] Multi-agent planning integration
 - [ ] Succession agent prototype
+- [ ] Multi-agent planning integration
+
+## Conceptual References
+
+- [NamuWiki: 세피로트의 나무](https://namu.wiki/w/%EC%84%B8%ED%94%BC%EB%A1%9C%ED%8A%B8%EC%9D%98%20%EB%82%98%EB%AC%B4)
+- [Tree of Life (Kabbalah)](https://en.wikipedia.org/wiki/Tree_of_life_%28Kabbalah%29)
+- [Qlippoth](https://en.wikipedia.org/wiki/Qlippoth)
+- [32 Paths of Wisdom](https://en.anthro.wiki/32_Paths_of_Wisdom)
+- [Use of Competency Questions in Ontology Engineering: A Survey](https://www.researchgate.net/publication/375064996_Use_of_Competency_Questions_in_Ontology_Engineering_A_Survey)
+- [A RAG Approach for Generating Competency Questions in Ontology Engineering](https://arxiv.org/abs/2409.08820)
 
 ## License
 
