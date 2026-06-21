@@ -1,4 +1,4 @@
 interface:
   display_name: "Sephirot Tree Builder"
-  short_description: "Build spec-first Sephirot/Qliphoth knowledge graphs."
-  default_prompt: "Use Sephirot Tree Builder to interview for a Malkuth-to-Kether spec, reduce ambiguity, and build/export the dual graph."
+  short_description: "Design, validate, plan, visualize, and export Sephirot/Qliphoth ontology graphs."
+  default_prompt: "Use Sephirot Tree Builder to create a Malkuth-to-Kether ontology spec from a template or interview, validate it, plan agent work, build the dual graph, visualize it, and export Neo4j Cypher, GraphML, Turtle, or JSON-LD as needed."

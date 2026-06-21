@@ -1,0 +1,100 @@
+{
+  "name": "sephirot",
+  "displayName": "Sephirot",
+  "description": "Spec-first Malkuth-to-Kether Sephirot/Qliphoth graph builder.",
+  "version": "0.1.0",
+  "publisher": "sephirot",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onCommand:sephirot.profile",
+    "onCommand:sephirot.newSeed",
+    "onCommand:sephirot.newFromTemplate",
+    "onCommand:sephirot.validate",
+    "onCommand:sephirot.plan",
+    "onCommand:sephirot.score",
+    "onCommand:sephirot.build",
+    "onCommand:sephirot.visualize",
+    "onCommand:sephirot.exportNeo4j",
+    "onCommand:sephirot.exportRdf",
+    "onCommand:sephirot.exportGraphml",
+    "onCommand:sephirot.doctor"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "sephirot.profile",
+        "title": "Sephirot: Show Framework Profile"
+      },
+      {
+        "command": "sephirot.newSeed",
+        "title": "Sephirot: New Seed"
+      },
+      {
+        "command": "sephirot.newFromTemplate",
+        "title": "Sephirot: New Seed From Template"
+      },
+      {
+        "command": "sephirot.validate",
+        "title": "Sephirot: Validate Seed"
+      },
+      {
+        "command": "sephirot.plan",
+        "title": "Sephirot: Plan Agent Work"
+      },
+      {
+        "command": "sephirot.score",
+        "title": "Sephirot: Score Ambiguity"
+      },
+      {
+        "command": "sephirot.build",
+        "title": "Sephirot: Build Dual Tree"
+      },
+      {
+        "command": "sephirot.visualize",
+        "title": "Sephirot: Visualize Graph"
+      },
+      {
+        "command": "sephirot.exportNeo4j",
+        "title": "Sephirot: Export Neo4j Cypher"
+      },
+      {
+        "command": "sephirot.exportRdf",
+        "title": "Sephirot: Export RDF/JSON-LD"
+      },
+      {
+        "command": "sephirot.exportGraphml",
+        "title": "Sephirot: Export GraphML"
+      },
+      {
+        "command": "sephirot.doctor",
+        "title": "Sephirot: Doctor"
+      }
+    ],
+    "configuration": {
+      "title": "Sephirot",
+      "properties": {
+        "sephirot.pythonPath": {
+          "type": "string",
+          "default": "python3",
+          "description": "Python executable used to run the Sephirot CLI."
+        },
+        "sephirot.cliModule": {
+          "type": "string",
+          "default": "sephirot.cli",
+          "description": "Python module for the Sephirot CLI."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "node -c src/extension.js",
+    "package": "npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.6.3"
+  }
+}

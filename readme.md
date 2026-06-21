@@ -52,6 +52,28 @@ The point is to keep the vertical ascent, polarity, correspondence, and mirror-r
 The symbolic layer is part of the API.
 It gives the ontology a native language for transformation, not just classification.
 
+## Mystical Qabalah Reference
+
+Sephirot is explicitly in conversation with the **Mystical Qabalah** lineage:
+the Tree is treated as a glyph for ascent, correspondence, inner transformation,
+and disciplined symbolic reasoning.
+That is the bridge this project cares about: occult structure on one side,
+ontology/KG engineering on the other.
+
+The image below is used as a visual reference for that lineage, not as decoration.
+It anchors Sephirot in the older mystical diagram tradition while the implementation
+translates the same structure into value nodes, CQ paths, evidence, and Qliphoth risk mirrors.
+
+<p align="center">
+  <img src="res/classic-sephirot.webp" alt="Public-domain Robert Fludd Tree of Life used as a Mystical Qabalah reference image" width="420">
+</p>
+
+<p align="center">
+  <sub>
+    Visual reference: Robert Fludd, <em>Tree of Life</em> (1621), public domain via Wikimedia Commons / Deutsche Fotothek.
+  </sub>
+</p>
+
 ## Core Idea
 
 In Sephirot, **Malkuth** is the current state and **Kether** is the target state.
@@ -307,10 +329,6 @@ If the runbook exists but is not used in real incidents,
 the path is corrupted by illusion of readiness.
 ```
 
-<p align="center">
-  <img src="res/classic-sephirot.webp" alt="Classic Sephirot structure used as the 10-value ontology map" width="420">
-</p>
-
 ## Data Model Sketch
 
 ```text
@@ -364,17 +382,30 @@ Sephirot starts as a CLI-first agent tool.
 It follows the same spec-first spirit as Ouroboros: interview first, crystallize a seed spec, block graph construction until ambiguity is low enough, then build/export the artifact.
 
 ```bash
+python3 -m sephirot.cli profile
+python3 -m sephirot.cli templates
+python3 -m sephirot.cli template-packs
+python3 -m sephirot.cli template-registry
+python3 -m sephirot.cli template --name succession-agent --out sephirot.seed.json
 python3 -m sephirot.cli new --context "Malkuth human state -> Kether target state" --out sephirot.seed.json
 python3 -m sephirot.cli init "Malkuth human state -> Kether target state" --out sephirot.seed.json
+python3 -m sephirot.cli validate --input sephirot.seed.json
+python3 -m sephirot.cli plan --input sephirot.seed.json
 python3 -m sephirot.cli score --input sephirot.seed.json
 python3 -m sephirot.cli questions --input sephirot.seed.json --limit 8
 python3 -m sephirot.cli build --input sephirot.seed.json --out sephirot.graph.json
+python3 -m sephirot.cli visualize --input sephirot.graph.json --format html --out sephirot.graph.html
+python3 -m sephirot.cli export-graphml --input sephirot.graph.json --out sephirot.graphml
+python3 -m sephirot.cli export-rdf --input sephirot.graph.json --format turtle --out sephirot.ttl
 ```
 
-The build command is gated by ambiguity:
+The `profile` command is the framework handshake for agent shells and integrations.
+It prints the canonical ontology contract: source schema, engineering contract, node labels, relationship labels, 10 Sephirot, Qliphoth mirrors, and 22 CQ paths.
+
+The `validate` and `build` commands are gated by ambiguity:
 
 ```text
-ambiguity <= 0.2 -> build allowed
+ambiguity <= 0.2 -> validation passes and build is allowed
 ambiguity > 0.2  -> continue the interview
 ```
 
@@ -387,13 +418,30 @@ skills/sephirot-tree-builder/SKILL.md
 That skill wraps the CLI as an agent workflow:
 
 ```text
-Interview -> Seed Spec -> Ambiguity Gate -> Dual Tree Build -> Graph DB Export
+Profile -> Template/Interview -> Seed Spec -> Validation Gate -> Agent Plan -> Dual Tree Build -> Visualization -> Graph DB Export
 ```
 
-## Neo4j Compatibility
+Built-in templates currently include:
+
+- `succession-agent`: tacit expertise -> reproducible team capability.
+- `agent-runtime`: ad hoc prompts -> Hermes/Ouroboros-style ontology runtime.
+
+Template packs are marketplace-style manifests.
+The built-in core pack lives at `template-packs/core.json`, and external packs can be used with:
+
+```bash
+python3 -m sephirot.cli template-registry --source path/to/registry.json
+python3 -m sephirot.cli templates --pack path/to/pack.json
+python3 -m sephirot.cli template --pack path/to/pack.json --name my-template --out sephirot.seed.json
+```
+
+The `plan` command turns validation state into agent-role assignments such as Malkuth Witness, Kether Architect, Sephira Mapper, Path Auditor, Qliphoth Red Team, and Graph Scribe.
+The `visualize` command renders a seed or graph as HTML, SVG, or Mermaid without external Python dependencies.
+
+## Graph and Ontology Export
 
 Sephirot graph output is designed to be graph-database compatible.
-The first supported export target is Neo4j Cypher.
+The supported export targets are Neo4j Cypher, GraphML, Turtle, and JSON-LD.
 
 ```bash
 python3 -m sephirot.cli build \
@@ -403,6 +451,20 @@ python3 -m sephirot.cli build \
 python3 -m sephirot.cli export-neo4j \
   --input sephirot.graph.json \
   --out sephirot.cypher
+
+python3 -m sephirot.cli export-graphml \
+  --input sephirot.graph.json \
+  --out sephirot.graphml
+
+python3 -m sephirot.cli export-rdf \
+  --input sephirot.graph.json \
+  --format turtle \
+  --out sephirot.ttl
+
+python3 -m sephirot.cli export-rdf \
+  --input sephirot.graph.json \
+  --format jsonld \
+  --out sephirot.jsonld
 ```
 
 The Cypher export creates:
@@ -422,6 +484,20 @@ Load into Neo4j with:
 cypher-shell -u neo4j -p "$NEO4J_PASSWORD" -f sephirot.cypher
 ```
 
+Use Turtle or JSON-LD when the target system expects semantic-web or ontology-exchange artifacts.
+
+## Packaging
+
+Sephirot is installable as a Python package with the `sephirot` console script.
+
+```bash
+python3 -m pip wheel . --no-deps --no-build-isolation -w dist
+python3 -m pip install dist/sephirot-*.whl
+sephirot profile
+```
+
+The wheel includes the core template pack and registry manifests under `share/sephirot/template-packs`.
+
 ## Reference Imagery
 
 The visual assets in `res/` are used as conceptual references for the graph language.
@@ -430,7 +506,7 @@ The visual assets in `res/` are used as conceptual references for the graph lang
 | --- | --- |
 | `tree-of-life-death.webp` | Dual positive/negative knowledge graph |
 | `sephirot-qliphoth-tree.jpg` | Ascent and descent metaphor for transformation and failure |
-| `classic-sephirot.webp` | 10-value Sephira structure |
+| `classic-sephirot.webp` | Mystical Qabalah lineage reference; Robert Fludd's public-domain Tree of Life |
 | `serpent-tree.webp` | Continuous traversal across the tree |
 
 <p align="center">
@@ -439,20 +515,34 @@ The visual assets in `res/` are used as conceptual references for the graph lang
 
 ## Roadmap
 
-- [ ] Core ontology schema
-- [ ] 10-value Sephira profile
-- [ ] 22-path CQ profile
-- [ ] Qliphoth mirror profile
-- [ ] Evidence schema
-- [ ] CQ answer validation
-- [ ] Knowledge graph builder
-- [ ] Graph visualization
-- [ ] Domain ontology templates
-- [ ] Succession agent prototype
-- [ ] Multi-agent planning integration
+- [x] Core ontology schema
+- [x] 10-value Sephira profile
+- [x] 22-path CQ profile
+- [x] Qliphoth mirror profile
+- [x] Evidence fields in seed and graph artifacts
+- [x] Ambiguity and structural validation gate
+- [x] Knowledge graph builder
+- [x] Neo4j Cypher export
+- [x] RDF/Turtle and JSON-LD export
+- [x] GraphML export
+- [x] Codex/Claude-style agent skill
+- [x] VS Code extension scaffold
+- [x] Graph visualization
+- [x] Domain ontology templates
+- [x] Succession agent prototype
+- [x] Multi-agent planning integration
+- [x] Core template pack manifest
+- [x] External template pack loading
+- [x] Local/remote template registry manifest support
+- [x] Packaged Python wheel build
+- [ ] Publish Python package
+- [ ] Packaged VS Code Marketplace release
 
 ## Conceptual References
 
+- Dion Fortune, [*The Mystical Qabalah*](https://search.worldcat.org/title/The-mystical-Qabalah/oclc/1036752840) - Hermetic Qabalah / Western Mystery Tradition reference for treating the Tree as a living glyph of ascent, correspondence, and psychic-spiritual transformation.
+- Robert Fludd, [*Tree of Life Fludd.jpg*](https://commons.wikimedia.org/wiki/File:Tree_of_Life_Fludd.jpg) - public-domain 1621 visual reference used for `res/classic-sephirot.webp`.
+- Wikimedia Commons, [Kabbalistic Tree of Life with the ten Sephiroth and 22 Hebrew letters](https://commons.wikimedia.org/wiki/File:Kabbalistic_Tree_of_Life_(Sephiroth).svg) - public-domain reference for the 10 Sephiroth / 22-path visual grammar.
 - [NamuWiki: 세피로트의 나무](https://namu.wiki/w/%EC%84%B8%ED%94%BC%EB%A1%9C%ED%8A%B8%EC%9D%98%20%EB%82%98%EB%AC%B4)
 - [Tree of Life (Kabbalah)](https://en.wikipedia.org/wiki/Tree_of_life_%28Kabbalah%29)
 - [Qlippoth](https://en.wikipedia.org/wiki/Qlippoth)

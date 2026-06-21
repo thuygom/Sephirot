@@ -1,11 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "sephirot"
 version = "0.1.0"
-description = "Spec-first dual knowledge graph builder from Malkuth to Kether."
+description = "Spec-first Sephirot/Qliphoth ontology design framework from Malkuth to Kether."
 readme = "readme.md"
 requires-python = ">=3.10"
 license = { text = "Apache-2.0" }
 authors = [{ name = "Sephirot Contributors" }]
+keywords = ["ontology", "knowledge-graph", "competency-questions", "agent", "kabbalah", "sephirot"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+  "Topic :: Text Processing :: Linguistic",
+]
 
 [project.scripts]
 sephirot = "sephirot.cli:main"
+
+[tool.setuptools]
+packages = ["sephirot"]
+include-package-data = true
+
+[tool.setuptools.data-files]
+"share/sephirot/template-packs" = ["template-packs/core.json", "template-packs/registry.json"]

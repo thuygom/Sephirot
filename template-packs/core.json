@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1",
+  "pack": "sephirot-core",
+  "title": "Sephirot Core Domain Templates",
+  "description": "Built-in ontology design templates shipped with Sephirot.",
+  "templates": [
+    {
+      "name": "agent-runtime",
+      "title": "Agent Runtime Framework",
+      "description": "Shape a Hermes/Ouroboros-style agent framework from ad hoc prompts into a governed ontology runtime.",
+      "source": "builtin:agent-runtime"
+    },
+    {
+      "name": "succession-agent",
+      "title": "Succession Agent",
+      "description": "Turn tacit high-performer expertise into a reproducible leadership ontology.",
+      "source": "builtin:succession-agent"
+    }
+  ]
+}

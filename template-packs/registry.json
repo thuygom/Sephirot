@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "registry": "sephirot-core-registry",
+  "title": "Sephirot Core Template Registry",
+  "description": "Default registry for Sephirot template packs.",
+  "packs": [
+    {
+      "pack": "sephirot-core",
+      "title": "Sephirot Core Domain Templates",
+      "description": "Built-in ontology design templates shipped with Sephirot.",
+      "source": "file:core.json"
+    }
+  ]
+}
