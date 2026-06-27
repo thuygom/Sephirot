@@ -1,13 +1,48 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.code-workspace
+
+# Python
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyd
+*.so
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.ipynb_checkpoints/
+.coverage
+.coverage.*
+htmlcov/
+.venv/
+venv/
+env/
 build/
 dist/
 *.egg-info/
+pip-wheel-metadata/
 
+# Local environment / secrets
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.secret
+*secret*
+*credential*
+
+# Sephirot generated graph/profile exports
 *.seed.local.json
 sephirot.seed.json
 sephirot.graph.json
@@ -20,5 +55,39 @@ sephirot.graphml
 sephirot.ttl
 sephirot.jsonld
 
+# Logs / runtime scratch
+*.log
+*.jsonl
+*.pid
+pid
+pid.*
+nohup.out
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Large local data / model artifacts
+data/
+datasets/
+models/
+checkpoints/
+*.ckpt
+*.h5
+*.joblib
+*.npy
+*.npz
+*.onnx
+*.parquet
+*.pth
+*.pt
+*.safetensors
+*.sqlite
+*.sqlite3
+*.db
+
+# VS Code extension build artifacts
 integrations/vscode/node_modules/
 integrations/vscode/*.vsix
+integrations/vscode/dist/
+integrations/vscode/out/

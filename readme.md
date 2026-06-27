@@ -25,6 +25,47 @@ What failure patterns can corrupt the journey?
   <img src="res/tree-of-life-death.webp" alt="Tree of Life and Tree of Death as positive and negative knowledge graphs" width="760">
 </p>
 
+## Sephirot(medical): Executable Clinical Harness
+
+This fork adds a medical domain adapter for compiling clinical knowledge sources into an executable ontology for MedicalAOS.
+The goal is not to turn CEKG or AI Patient KG into a direct label oracle.
+Those graphs are source knowledge layers; Sephirot(medical) converts them into runtime judgment criteria, bounded KG activation rules, SCC review contracts, Qliphoth risk mirrors, and patient-level audit artifacts.
+
+In the medical adapter:
+
+- **Malkuth** is the observed patient reality: available EHR, CXR, diagnosis text, KG hits, and runtime trace.
+- **Kether** is reviewable diagnostic closure: autonomous finalization, HITL handoff, safety stop, or residual-risk termination with evidence.
+- **10 Sephirot nodes** become diagnostic responsibility nodes such as data readiness, explanation consistency, trajectory, cross-modal synthesis, safety judgment, clinical constraint, alternative hypothesis, and final closure.
+- **22 paths** become competency questions the harness must answer before a case can be safely closed.
+- **Qliphoth mirrors** expose neglected nodes, missing paths, unsupported shortcuts, KG misuse, unsafe finalization, or false certainty.
+- **SCC** is the local cyclic repair component opened inside the global diagnostic DAG when cross-role failure cannot be handled by a single pass.
+
+<p align="center">
+  <img src="res/sephirot-qliphoth-tree.jpg" alt="Mirrored Sephirot and Qliphoth tree used by the medical executable ontology adapter" width="430">
+</p>
+
+The MedicalAOS adapter compiles a contract like this:
+
+```bash
+sephirot compile-medicalaos \
+  --cekg /path/to/cekg/source \
+  --aipatient /path/to/ai_patient_kg/source \
+  --out /path/to/sephirot_medical_ontology.json
+```
+
+The generated ontology is consumed by MedicalAOS as:
+
+- `diagnostic_ascent_contract`: the 10-node / 22-path Malkuth-to-Kether diagnostic ascent.
+- `activation_formula`: when KG, SCC, HITL, imaging escalation, or safety stop may open.
+- `decision_criteria`: bounded criteria compiled from CEKG, raw diagnosis hints, and AI Patient KG structural priors.
+- `scc_cycle_ontology`: local strongly connected components for cyclic repair and condensation back into the global DAG.
+- `prompt_cards`: LLM-facing runtime role cards and system prompt fragments.
+- `qliphoth_failure_mirrors`: explicit failure mirrors for uncovered evidence, unsafe shortcuts, and corrupted termination.
+
+At runtime, each MedicalAOS case can emit `sephirot_execution_graph.json`.
+That graph records the 10 diagnostic nodes, 22 competency paths, observed coverage, matched KG criteria, SCC evidence, and Qliphoth risks for the patient episode.
+This is the core Clinical Harness claim: Sephirot(medical) makes the reasoning route auditable before asking whether the prediction score improved.
+
 ## Occult x Ontology Engineering
 
 The core stance of this project is:

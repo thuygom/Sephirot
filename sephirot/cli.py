@@ -12,6 +12,7 @@ from .builder import build_dual_tree
 from .doctor import checks_as_dict, collect_checks
 from .graphml import graph_to_graphml
 from .interview import collect_full_sweep, refine_until_threshold
+from .medicalaos import compile_medicalaos_ontology, dump_medicalaos_ontology
 from .models import blank_spec, dump_json, load_json
 from .neo4j import graph_to_cypher
 from .planner import agent_plan, plan_as_markdown
@@ -274,6 +275,18 @@ def cmd_doctor(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_compile_medicalaos(args: argparse.Namespace) -> int:
+    ontology = compile_medicalaos_ontology(
+        cekg_paths=args.cekg,
+        aipatient_paths=args.aipatient,
+        mode=args.mode,
+        threshold=args.threshold,
+    )
+    dump_medicalaos_ontology(ontology, args.out)
+    print(f"Wrote Sephirot(medical) executable ontology: {args.out}")
+    return 0 if ontology.get("validation", {}).get("ok") else 2
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="sephirot",
@@ -459,6 +472,36 @@ def build_parser() -> argparse.ArgumentParser:
     )
     doctor_parser.add_argument("--json", action="store_true", help="Print checks as JSON.")
     doctor_parser.set_defaults(func=cmd_doctor)
+
+    medicalaos_parser = subparsers.add_parser(
+        "compile-medicalaos",
+        help="Compile CEKG and AI Patient KG sources into a Sephirot(medical) executable ontology.",
+    )
+    medicalaos_parser.add_argument(
+        "--cekg",
+        action="append",
+        default=[],
+        help="CEKG file or directory. May be supplied multiple times.",
+    )
+    medicalaos_parser.add_argument(
+        "--aipatient",
+        action="append",
+        default=[],
+        help="AI Patient KG JSON file or directory. May be supplied multiple times.",
+    )
+    medicalaos_parser.add_argument(
+        "--mode",
+        choices=("off", "advisory", "control"),
+        default="advisory",
+        help="Runtime KG mode encoded into the activation formula.",
+    )
+    medicalaos_parser.add_argument("--threshold", type=float, default=0.35, help="KG activation threshold.")
+    medicalaos_parser.add_argument(
+        "--out",
+        default="sephirot.medicalaos.ontology.json",
+        help="Output executable ontology JSON path.",
+    )
+    medicalaos_parser.set_defaults(func=cmd_compile_medicalaos)
 
     return parser
 
